@@ -5,6 +5,7 @@ import './index.css'
 export function HomePage() {
     return (
         <>
+            <link rel="icon" href="images/home-favicon.png" />
             <Header />
             <div className="home-page">
                 <div className="products-grid">
