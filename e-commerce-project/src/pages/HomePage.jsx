@@ -3,6 +3,9 @@ import './HomePage.css'
 import './index.css'
 
 export function HomePage() {
+
+
+
     return (
         <>
             <link rel="icon" href="images/home-favicon.png" />
