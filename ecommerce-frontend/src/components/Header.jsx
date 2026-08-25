@@ -3,7 +3,11 @@ import whiteLogo from '../assets/images/logo-white.png'
 import mobileLogo from '../assets/images/mobile-logo-white.png'
 import './header.css'
 
-export function Header() {
+export function Header({ cart }) {
+
+    function countCartItem() {
+        return cart.length
+    }
     return (
         <>
             <div className="header">
@@ -30,7 +34,7 @@ export function Header() {
 
                     <NavLink className="cart-link header-link" to="/checkout">
                         <img className="cart-icon" src="images/icons/cart-icon.png" />
-                        <div className="cart-quantity">3</div>
+                        <div className="cart-quantity">{countCartItem()}</div>
                         <div className="cart-text">Cart</div>
                     </NavLink>
                 </div>
