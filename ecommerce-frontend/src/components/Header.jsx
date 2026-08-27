@@ -6,7 +6,13 @@ import './header.css'
 export function Header({ cart }) {
 
     function countCartItem() {
-        return cart.length
+        let cartItemCount = 0
+
+        cart.forEach((cartItem) => {
+            cartItemCount += cartItem.quantity
+        })
+
+        return cartItemCount
     }
     return (
         <>

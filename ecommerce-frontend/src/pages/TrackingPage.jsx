@@ -5,7 +5,7 @@ import './trackingpage.css'
 export function TrackingPage() {
     return (
         <>
-            <link rel="icon" href="images/tracking-favicon.png"></link>
+            <link rel="icon" href="/images/tracking-favicon.png" />
             <Header />
             <div className="tracking-page">
                 <div className="order-tracking">
