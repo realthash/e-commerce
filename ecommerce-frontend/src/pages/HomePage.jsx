@@ -44,7 +44,7 @@ export function HomePage({ cart }) {
                                 </div>
 
                                 <div className="product-price">
-                                    ${formatCurrency(product)}
+                                    ${formatCurrency(product.priceCents)}
                                 </div>
 
                                 <div className="product-quantity-container">
