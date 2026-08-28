@@ -1,7 +1,7 @@
 import { Link } from 'react-router'
 import greenlogo from '../../assets/images/logo.png'
 import mobilelogo from '../../assets/images/mobile-logo.png'
-import '../checkout/checkout-header.css'
+import './checkout-header.css'
 
 export function CheckoutHeader() {
     return (

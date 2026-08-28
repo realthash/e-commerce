@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Header } from '../components/Header'
-import { formatCurrency } from '../utils/formatCurrency'
-// import { products } from '../data/products.js'
+import { Header } from '../../components/Header'
+import { formatCurrency } from '../../utils/formatCurrency'
+// import { products } from '../../data/products.js'
 import './HomePage.css'
-import './index.css'
+import '../index.css'
 
 export function HomePage({ cart }) {
 

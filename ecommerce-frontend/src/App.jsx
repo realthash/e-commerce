@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
-import { HomePage } from './pages/HomePage'
+import { HomePage } from './pages/home/HomePage'
 import { CheckoutPage } from './pages/CheckoutPage'
 import { Routes, Route } from 'react-router'
 import { OrdersPage } from './pages/OrdersPage'
