@@ -13,15 +13,19 @@ export function CheckoutPage({ cart }) {
 
 
     useEffect(() => {
-        axios.get('api/payment-summary').then((res) => {
-            console.log(res.data)
-            setPaymentSummary(res.data)
-        })
+        // axios.get('api/payment-summary').then((res) => {
+        //     console.log(res.data)
+        //     setPaymentSummary(res.data)
+        // })
+        const fetchAppData = async () => {
+            let res = await axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
+            setDeliveryOptions(res.data)
 
-        axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
-            .then((res) => {
-                setDeliveryOptions(res.data)
-            })
+            res = await axios.get('api/payment-summary')
+            setPaymentSummary(res.data)
+        }
+
+        fetchAppData()
     }, [])
 
     return (
