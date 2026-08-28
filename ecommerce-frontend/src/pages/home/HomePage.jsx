@@ -6,11 +6,10 @@ import { ProductsGrid } from './ProductsGrid'
 import './HomePage.css'
 import '../index.css'
 
-export function HomePage({ cart }) {
+export function HomePage({ cart, loadCart }) {
     const [products, setProducts] = useState([])
 
     useEffect(() => {
-
         const fetchAppData = async () => {
             const res = await axios.get('/api/products')
             setProducts(res.data)
@@ -24,7 +23,7 @@ export function HomePage({ cart }) {
             <link rel="icon" href="/images/home-favicon.png" />
             <Header cart={cart} />
             <div className="home-page">
-                <ProductsGrid products={products} />
+                <ProductsGrid products={products} loadCart={loadCart} />
             </div>
         </>
     )
