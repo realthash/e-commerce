@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { HomePage } from './pages/home/HomePage'
-import { CheckoutPage } from './pages/CheckoutPage'
+import { CheckoutPage } from './pages/checkout/CheckoutPage'
 import { Routes, Route } from 'react-router'
 import { OrdersPage } from './pages/OrdersPage'
 import { TrackingPage } from './pages/TrackingPage'
