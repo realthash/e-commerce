@@ -19,7 +19,7 @@ function App() {
 
   useEffect(() => {
     loadCart()
-  }, [])
+  }, [cart])
 
   return (
     <Routes>
