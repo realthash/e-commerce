@@ -9,13 +9,21 @@ import './checkout/checkout-header.css'
 export function CheckoutPage({ cart }) {
 
     const [deliveryOptions, setDeliveryOptions] = useState([])
+    const [paymentSummary, setPaymentSummary] = useState(null)
+
 
     useEffect(() => {
+        axios.get('api/payment-summary').then((res) => {
+            console.log(res.data)
+            setPaymentSummary(res.data)
+        })
+
         axios.get('/api/delivery-options?expand=estimatedDeliveryTime')
             .then((res) => {
                 setDeliveryOptions(res.data)
             })
     }, [])
+
     return (
         <>
             <link rel="icon" href="/images/cart-favicon.png" />
@@ -55,7 +63,7 @@ export function CheckoutPage({ cart }) {
                                                 {cartItem.product.name}
                                             </div>
                                             <div className="product-price">
-                                                ${formatCurrency(cartItem.product)}
+                                                ${formatCurrency(cartItem.product.priceCents)}
                                             </div>
                                             <div className="product-quantity">
                                                 <span>
@@ -104,40 +112,45 @@ export function CheckoutPage({ cart }) {
 
                     </div>
 
-                    <div className="payment-summary">
-                        <div className="payment-summary-title">
-                            Payment Summary
+                    {paymentSummary && (
+                        <div className="payment-summary">
+                            <div className="payment-summary-title">
+                                Payment Summary
+                            </div>
+
+                            <div className="payment-summary-row">
+                                <div>Items ({paymentSummary.totalItems}):</div>
+                                <div className="payment-summary-money">${formatCurrency(paymentSummary.productCostCents)}</div>
+                            </div>
+
+                            <div className="payment-summary-row">
+                                <div>Shipping &amp; handling:</div>
+                                <div className="payment-summary-money">${formatCurrency(paymentSummary.shippingCostCents)}</div>
+                            </div>
+
+                            <div className="payment-summary-row subtotal-row">
+                                <div>Total before tax:</div>
+                                <div className="payment-summary-money">${formatCurrency(paymentSummary.totalCostBeforeTaxCents)}</div>
+                            </div>
+
+                            <div className="payment-summary-row">
+                                <div>Estimated tax (10%):</div>
+                                <div className="payment-summary-money">${formatCurrency(paymentSummary.taxCents)}</div>
+                            </div>
+
+                            <div className="payment-summary-row total-row">
+                                <div>Order total:</div>
+                                <div className="payment-summary-money">${formatCurrency(paymentSummary.totalCostCents)}</div>
+                            </div>
+
+                            <button className="place-order-button button-primary">
+                                Place your order
+                            </button>
                         </div>
 
-                        <div className="payment-summary-row">
-                            <div>Items (3):</div>
-                            <div className="payment-summary-money">$42.75</div>
-                        </div>
+                    )}
 
-                        <div className="payment-summary-row">
-                            <div>Shipping &amp; handling:</div>
-                            <div className="payment-summary-money">$4.99</div>
-                        </div>
 
-                        <div className="payment-summary-row subtotal-row">
-                            <div>Total before tax:</div>
-                            <div className="payment-summary-money">$47.74</div>
-                        </div>
-
-                        <div className="payment-summary-row">
-                            <div>Estimated tax (10%):</div>
-                            <div className="payment-summary-money">$4.77</div>
-                        </div>
-
-                        <div className="payment-summary-row total-row">
-                            <div>Order total:</div>
-                            <div className="payment-summary-money">$52.51</div>
-                        </div>
-
-                        <button className="place-order-button button-primary">
-                            Place your order
-                        </button>
-                    </div>
                 </div>
             </div>
         </>
